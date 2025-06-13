@@ -5,9 +5,10 @@
 using namespace std;
 
 void mergeSort(int arr[], int size);
+void merge(int arr[], int size);
 
 int main() {
-    int arr[] = {2, 1, 3, 4};
+    int arr[] = {2, 1, 3};
     int size = sizeof(arr) / sizeof(arr[0]);
 
     mergeSort(arr, size);
@@ -34,7 +35,18 @@ void mergeSort(int arr[], int size) {
     //merge sorted subarrays arr[i..j), which means the subarray
     //of elements from arr[i], arr[i+1], ..., arr[j-1]
     //arr[0..size/2) and arr[size/2 .. size),
-   
+    merge(arr, size); 
+}
+
+//add merge function
+//(1) Denote subarray as arr[i..j) as a subset of elements of arr
+//    from arr[i] (included) to the element right before arr[j],
+//    that is, arr[i..j) contains elements
+//    arr[i], arr[i+1], ..., arr[j-1]
+//(2) Suppose arr[0..size/2) and arr[size/2..size) are both sorted.
+//(3) Merge sorted arr[0..size/2) and arr[size/2..size) to get
+//    a sorted array arr[0, size).
+void merge(int arr[], int size) {
     int* brr = new int[size]; //temporary spaces to hold 
          //the sorted array with size many elements
     int k = 0; 
